@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="css/header.css">
+</head>
+<body>
+<div id="app">
+        <div id="header-content">
+        <!-- 显示的导航栏开始 -->
+            <div>
+              <!-- 游戏全目录 -->
+              <div class="NIE-topBar-menu-btn" @mouseenter='Xcan=2' @mouseleave='Xcan=1'><span></span>游戏全目录</div>
+              <!-- 妖怪屋火热公测 -->
+              <div id="NIE-topBar-news" @mouseenter='Ycan=1' @mouseleave='Ycan=2'><img src="./img/header/yaoguai.png"></div>
+              <!-- 网易图标 -->
+              <a class="NIE-topBar-logo" href="http://game.163.com"></a>
+              <!-- 游戏充值，限时领取免费课程滚动模块 -->
+              <div class="NIE-topBar-right">
+                  <!-- <div> -->
+                      <a  :href="href" :class="isRight==1?'fadeUp2':isRight==2?'center':'fadeUp'">{{text}}</a>
+                      <!-- <a  href="https://act.you.163.com/act/pub/qAU4P437asfF.html?from=out_ynzy_game_2">限时领取免费课程</a>
+                      <a  href="https://act.you.163.com/act/pub/qAU4P437asfF.html?from=out_ynzy_game_2">游戏充值9.8折</a> -->
+                  <!-- </div>  -->
+              </div>
+              <!-- 热点推荐 -->
+              <div class="NIE-topBar-recommend" @mouseenter="Rcan=1" @mouseleave="Rcan=2"><span></span>热点推荐</div>
+            </div>
+        <!-- 显示的导航栏结束 -->
+        <!-- 隐藏的导航栏开始 -->
+        <!-- 妖怪屋大图开始 -->
+            <div class="yg-lg" v-show='Ycan==1' @mouseenter='Ycan=1' @mouseleave='Ycan=2' >
+              <a href="https://yysygw.163.com/">
+                  <img src="./img/header/yg-lg.png">
+              </a> 
+            </div>
+          <!-- 妖怪屋结束 -->
+          <!-- 热点推荐详细内容开始 -->
+            <div class="redian" :class="Rcan==1?'height':''"  @mouseenter="Rcan=1" @mouseleave="Rcan=2">
+              <!-- 5张图片 -->
+              <ul class="NIE-game-list">
+                  <li>
+                      <a href="http://zm.163.com/">
+                          <img src="./img/header/zhenmoqu.png">
+                          <div>
+                              <span>《镇魔曲》X《我和我的家乡》</span>
+                              <span>影游联动，国庆送影票</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://yysygw.163.com/">
+                          <img src="./img/header/yinyang.png">
+                          <div>
+                              <span>阴阳师：妖怪屋</span>
+                              <span>全平台火热公测中</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://qnm.163.com/">
+                          <img src="./img/header/qiannv.png">
+                          <div>
+                              <span>倩女手游新职业上线</span>
+                              <span></span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://hd.163.com/fab/">
+                          <img src="./img/header/haidao.png">
+                          <div>
+                              <span>海岛纪元</span>
+                              <span>新版本金秋月夜暖心上线</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://lz.163.com/">
+                          <img src="./img/header/tegong.png">
+                          <div>
+                              <span>《量子特攻》深海营救</span>
+                              <span>乘风破浪！</span>
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+              <!-- 5张图片结束 -->
+              <!-- 我的足迹 -->
+              <div class="my-foot">
+                  <span>我的足迹:</span>
+                  <a href="https://yysygw.163.com/?from=nietop"><span>阴阳师：妖怪屋</span></a>
+                  <a href="http://xyq.163.com/?from=nietop"><span>梦幻西游电脑版</span></a>
+              </div>
+              <!-- 足迹结束 -->
+              <!-- 点击充值，注册账号，客服中心 -->
+              <div class="my-uname">
+                  <a href="http://xyq.163.com/reg/"><i></i> 注册账号</a>
+                  <a href="http://ecard.163.com/script/index?platform=xyq"><i></i>购卡充值</a>
+                  <a href="http://gm.163.com/?from=nietop"><i></i>客服中心</a>
+              </div>
+            </div>
+            <!-- 热点推荐详细内容结束 -->
+            <div id="NIE-topBar-menu" :class="Xcan==2?'height':''" @mouseenter='Xcan=2' @mouseleave='Xcan=1'>
+                <div id="NIE-table">
+                    <ul class="NIE-nav">
+                        <li>客户端游戏</li>
+                        <li>手机游戏</li>
+                        <li>游戏辅助</li>
+                    </ul>
+                    <ul class="NIE-list">
+                        <li class="one">
+                            <p>角色扮演</p>
+                            <a href="http://xyq.163.com/?from=nietop">梦幻西游电脑版</a>
+                            <a href="http://xy2.163.com/?from=nietop" class="hot">大话2经典版</a>
+                            <a href="http://tx3.163.com/fab/" class="hot">天下3</a>
+                            <a href="http://xqn.163.com/?from=nietop" class="hot">新倩女幽魂</a>
+                            <a href="http://n.163.com/?from=nietop" class="hot">逆水寒</a>
+                            <a href="https://ty.163.com/fab/1/" class="hot">天谕</a>
+                            <a href="https://nb.163.com/?from=nietop#/">超激斗梦境</a>
+                            <a href="http://long.163.com/index.html">龙魂时刻</a>
+                            <a href="http://tia.163.com/?from=nietop">泰亚史诗</a>
+                            <a href="http://dh2.163.com/?from=nietop">大话2免费版</a>
+                            <a href="http://xy3.163.com/?from=nietop" class="hot">新大话3经典版</a>
+                            <a href="http://x3.163.com/?from=nietop">新大话3免费版</a>
+                            <a href="http://zmq.163.com/?from=nietop" class="hot">镇魔曲</a>
+                            <a href="http://zw.163.com/?from=nietop">镇魔曲页游</a>
+                            <a href="http://dtws.163.com/?from=nietop">大唐无双</a>
+                            <a href="http://wh2.163.com/?from=nietop">武魂2</a>
+                            <a href="https://wow.blizzard.cn/landing">魔兽世界</a>
+                        </li>
+                        <li class="two">
+                            <p>&nbsp;</p>
+                            <a href="">暗黑破坏神3</a>
+                            <a href="">新飞飞</a>
+                            <a href="">精灵传说</a>
+                        </li>
+                        <li :class="login==1?'three':'click'" class="transition">
+                            <p>竞技/休闲</p>
+                            <a href="http://mc.163.com/?from=nietop" class="new">我的世界</a>
+                            <a href="https://ow.blizzard.cn/home/?from=nietop" class="new">守望先锋</a>
+                            <a href="https://hyp.163.com/fab/1/" class="new">荒野行动Plus</a>
+                            <a href="http://evepc.163.com/?from=nietop" class="new">EVE Online</a>
+                            <a href="http://tuji.163.com/?from=nietop" class="new">突击英雄</a>
+                            <a href="http://z.163.com/?from=nietop#/" class="new">战意</a>
+                            <a href="http://mjdj.163.com/?from=nietop" class="new">秘境对决</a>
+                            <a href="https://nostos.163.com/cn/?from=nietop" class="new">故土Nostos</a>
+                            <a href="https://heroes.blizzard.cn/landing/?from=nietop">风暴英雄</a>
+                            <a href="https://sc2.blizzard.cn/home/?from=nietop">星际争霸Ⅱ</a>
+                            <a href="https://hs.blizzard.cn/landing">炉石传说</a>
+                            <a href="javascript:;" :class="some=='更多热门端游'?'toheight':'noheight'" @click='somes'>{{some}}</a>
+                        </li>
+                        <li class="four">
+                            <p>热门推荐</p>
+                            <a href="http://xyq.163.com/?from=nietop" class="hot">梦幻西游电脑版</a>
+                            <a href="http://xy2.163.com/?from=nietop" class="hot">大话2经典版</a>
+                            <a href="http://tx3.163.com/fab/" class="hot">天下3</a>
+                            <a href="http://xqn.163.com/?from=nietop" class="hot">新倩女幽魂</a>
+                            <a href="http://n.163.com/?from=nietop" class="hot">逆水寒</a>
+                            <a href="https://ty.163.com/fab/1/" class="hot">天谕</a>
+                            <a href="https://nb.163.com/?from=nietop#/" class="hot">超激斗梦境</a>
+                            <a href="http://long.163.com/index.html" class="hot">龙魂时刻</a>
+                            <a href="http://tia.163.com/?from=nietop" class="hot">泰亚史诗</a>
+                            <a href="http://dh2.163.com/?from=nietop" class="hot">大话2免费版</a>
+                            <a href="http://xy3.163.com/?from=nietop" class="hot">新大话3经典版</a>
+                            <a href="http://x3.163.com/?from=nietop" class="hot">新大话3免费版</a>
+                            <a href="http://zmq.163.com/?from=nietop">镇魔曲</a>
+                            <a href="http://zw.163.com/?from=nietop">镇魔曲页游</a>
+                            <a href="http://dtws.163.com/?from=nietop">大唐无双</a>
+                            <a href="http://wh2.163.com/?from=nietop">武魂2</a>
+                            <a href="https://wow.blizzard.cn/landing">魔兽世界</a>
+                        </li>
+                        <li class="five transition" :class="login1==2?'width':''">
+                            <p>新品推荐</p>
+                            <div class="five-one">
+                                <a href="javascript:;">阴阳师：妖怪屋</a>
+                                <a href="javascript;:">猎手之王</a>
+                                <a href="javascript;:">梦幻西游三维版</a>
+                                <a href="javascript;:">哈利波特：魔法觉醒</a>
+                                <a href="javascript;:">代号：T</a>
+                                <a href="javascript;:">重装上阵</a>
+                                <a href="javascript;:">花与剑</a>
+                                <a href="javascript;:">光·遇</a>
+                                <a href="javascript;:">实况球会经理</a>
+                                <a href="javascript;:">战三国 八阵奇谋</a>
+                                <a href="javascript;:">海岛纪元</a>
+                                <a href="javascript;:">梦幻西游网页版</a>
+                                <a href="javascript;:">风云岛行动</a>
+                                <a href="javascript;:">代号：诸神黄昏</a>
+                                <a href="javascript;:">一起优诺 </a>
+                                <a href="javascript;:">代号：OIP</a>
+                                <a href="javascript;:">代号·世界</a>
+                            </div>
+                            <div class="five-one">
+                                <a href="javascript:;">阴阳师：妖怪屋</a>
+                                <a href="javascript;:">猎手之王</a>
+                                <a href="javascript;:">梦幻西游三维版</a>
+                                <a href="javascript;:">哈利波特：魔法觉醒</a>
+                                <a href="javascript;:">代号：T</a>
+                                <a href="javascript;:">重装上阵</a>
+                                <a href="javascript;:">花与剑</a>
+                                <a href="javascript;:">光·遇</a>
+                                <a href="javascript;:">实况球会经理</a>
+                                <a href="javascript;:">战三国 八阵奇谋</a>
+                                <a href="javascript;:">海岛纪元</a>
+                                <a href="javascript;:">梦幻西游网页版</a>
+                                <a href="javascript;:">风云岛行动</a>
+                                <a href="javascript;:">代号：诸神黄昏</a>
+                                <a href="javascript;:">一起优诺 </a>
+                                <a href="javascript;:">代号：OIP</a>
+                                <a href="javascript;:">代号·世界</a>
+                            </div>
+                            <div class="five-three">
+                                <a href="javascript:;">宝可梦大探险</a>
+                                <a href="javascript;:">黑潮之上</a>
+                                <a href="javascript;:">绘真·妙笔千山</a>
+                                <a href="javascript;:">流星群侠传</a>
+                                <a href="javascript;:">有杀气童话2</a>
+                                <a href="javascript;:">完售物语</a>
+                                <a href="javascript;:">天谕手游</a>
+                                <a href="javascript;:">Disorder</a>
+                                <a href="javascript;:">机动都市阿尔法</a>
+                                <a href="javascript;:">幻书启世录</a>
+                                <a href="javascript;:">青璃</a>
+                                <a href="javascript;:">孤岛先锋</a>
+                                <a href="javascript;:">逗斗火柴人</a>
+                                <a href="javascript;:">游戏王：决斗链接</a>
+                                <a href="javascript;:">节奏空间 </a>
+                                <a href="javascript;:">隐世录</a>
+                                <a href="javascript;:">荒野潜伏者</a>
+                            </div>
+                            <div class="five-three">
+                                <a href="javascript:;">宝可梦大探险</a>
+                                <a href="javascript;:">黑潮之上</a>
+                                <a href="javascript;:">绘真·妙笔千山</a>
+                                <a href="javascript;:">流星群侠传</a>
+                                <a href="javascript;:">有杀气童话2</a>
+                                <a href="javascript;:">完售物语</a>
+                                <a href="javascript;:">天谕手游</a>
+                                <a href="javascript;:">Disorder</a>
+                                <a href="javascript;:">机动都市阿尔法</a>
+                                <a href="javascript;:">幻书启世录</a>
+                                <a href="javascript;:">青璃</a>
+                                <a href="javascript;:">孤岛先锋</a>
+                                <a href="javascript;:">逗斗火柴人</a>
+                                <a href="javascript;:">游戏王：决斗链接</a>
+                                <a href="javascript;:">节奏空间 </a>
+                                <a href="javascript;:">隐世录</a>
+                                <a href="javascript;:">荒野潜伏者</a>
+                            </div>
+                            <div class="five-three">
+                                <a href="javascript:;">宝可梦大探险</a>
+                                <a href="javascript;:">黑潮之上</a>
+                                <a href="javascript;:">绘真·妙笔千山</a>
+                                <a href="javascript;:">流星群侠传</a>
+                                <a href="javascript;:">有杀气童话2</a>
+                                <a href="javascript;:">完售物语</a>
+                                <a href="javascript;:">天谕手游</a>
+                                <a href="javascript;:">Disorder</a>
+                                <a href="javascript;:">机动都市阿尔法</a>
+                                <a href="javascript;:">幻书启世录</a>
+                                <a href="javascript;:">青璃</a>
+                                <a href="javascript;:">孤岛先锋</a>
+                                <a href="javascript;:">逗斗火柴人</a>
+                                <a href="javascript;:">游戏王：决斗链接</a>
+                                <a href="javascript;:">节奏空间 </a>
+                                <a href="javascript;:">隐世录</a>
+                                <a href="javascript;:">荒野潜伏者</a>
+                            </div>
+                            <div class="five-three">
+                                <a href="javascript:;">实况俱乐部</a>
+                                <a href="javascript:;">大唐游仙记</a>
+                                <a href="javascript:;">天下HD</a>
+                                <a href="javascript:;">猫和老鼠官方手游</a>
+                            </div>
+                            <a href="javascript:;" @click="somes1" :class="login1==1?'toheight':'noheight'">{{some1}}</a>
+                        </li>
+                        <li class="six">
+                            <a href="javascript:;" class="new">网易云游戏</a>
+                            <a href="javascript:;" class="hot">网易MuMu</a>
+                            <a href="javascript:;" class="hot">会员俱乐部</a>
+                            <a href="javascript:;" class="new">网易大神</a>
+                            <a href="javascript:;" class="new">网易BUFF</a>
+                            <a href="javascript:;">网易游戏印象</a>
+                            <a href="javascript:;" class="new">网易游戏助手</a>
+                            <a href="javascript:;" class="hot">易次元</a>
+                            <a href="javascript:;">手机将军令</a>
+                            <a href="javascript:;">将军令</a>
+                            <a href="javascript:;">藏宝阁</a>
+                            <a href="javascript:;">网易CC</a>
+                            <a href="javascript:;">自助百宝箱</a>
+                            <a href="javascript:;">网易UU加速器</a>
+                            <a href="javascript:;">客服中心</a>
+                            <a href="javascript:;">网易游戏</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+var vm=new Vue({
+  el:"#app",
+  data:{
+    href:'https://act.you.163.com/act/pub/qAU4P437asfF.html?from=out_ynzy_game_2',
+    text:'游戏充值9.8折',
+    isRight:1,
+    Ycan:2,
+    Rcan:'0px',
+    some:'更多热门端游',
+    login:1,
+    some1:'更多热门手游',
+    login1:1,
+    Xcan:1,
+  },
+  methods:{
+        somes(){
+            if(this.some=='更多热门端游'){
+                this.some='<<'
+                this.login=2
+            }else{
+                this.some='更多热门端游'
+                this.login=1
+            }
+        },
+        somes1(){
+            if(this.some1=='更多热门手游'){
+                this.some1='<<'
+                this.login1=2
+            }else{
+                this.some1='更多热门手游'
+                this.login1=1
+            }
+        }
+  },
+  mounted(){
+      setInterval(()=>{
+        this.isRight=3
+        setTimeout(()=>{
+            this.isRight=2
+            setTimeout(()=>{
+                this.isRight=1
+                if(this.text=='游戏充值9.8折'){
+                    this.text='限时领取免费课程'
+                }else{
+                    this.text='游戏充值9.8折'
+                }
+            },500)
+        },500)
+      },4000)
+      
+  }
+})
+</script>
+</body>
+</html>
